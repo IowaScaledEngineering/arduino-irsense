@@ -27,8 +27,8 @@ The sensor is represented by an IRSense class.
 
 #### IRSense Class Methods
 
-#####bool begin(uint8_t tmd26721Address = 0x39)
-#####bool begin(TwoWire& i2cInterface, uint8_t tmd26721Address = 0x39)
+##### bool begin(uint8_t tmd26721Address = 0x39)
+##### bool begin(TwoWire& i2cInterface, uint8_t tmd26721Address = 0x39)
 
 Before using the IRSense object, begin() must be called once. 
 
@@ -41,7 +41,7 @@ __Return values:__
 * true - initialization was successful
 * false - initialization failed
 
-#####int readProximity()
+##### int readProximity()
 
 The core function of the sensor.  This will read the proximity registers and return as an integer if a valid conversion is available.  If not, it waits up to 15ms for PVALID in the status register to be set.  If the sensor has had an error or isn't initialized, it will try to reinitialize the sensor.  
 
@@ -49,7 +49,7 @@ __Return values:__
 * -1 = Sensor communications error
 * 0-1023 = Value in the proximity register
 
-#####bool reinitialize()
+##### bool reinitialize()
 
 Attempts to reinitialize the sensor in the event of an error.
 
@@ -57,7 +57,7 @@ __Return values:__
 * true - initialization was successful
 * false - initialization failed
 
-#####bool proximityReady()
+##### bool proximityReady()
 
 Polls the status register (0x13) and gets the value of PVALID, indicating that a valid proximity reading.
 
@@ -65,7 +65,7 @@ __Return values:__
 * true - reading is valid and available
 * false - reading is not valid, or communications failed
 
-#####bool setControlValues(PLEDChannel ledChannel, PDriveStrength ledStrength, PGain sensorGain)
+##### bool setControlValues(PLEDChannel ledChannel, PDriveStrength ledStrength, PGain sensorGain)
 
 The key parameters of the proximity sensor are the LED channel to use, how strongly to drive the LED, and how much gain to apply to the sensor reading.  See [the TMD26721 datasheet](https://ams.com/documents/20143/36005/TMD2672_DS000342_1-00.pdf) for full details on how to use these.  Our usual recommended values for model railroad applications are channel 1 (more immune to flourescent lighting), 100% power, and 4x gain, and so these are the library defaults.  However they may not be optimal for all applications, and so a function is provided to allow you to change them.
 
@@ -92,7 +92,7 @@ __Return values:__
 * true - configuration change was successful
 * false - configuration change or communications failed
 
-#####bool setPulseCount(uint8_t pulseCount)
+##### bool setPulseCount(uint8_t pulseCount)
 
 Sets the number of IR pulses sent out for each reading.  See the datasheet for more details on how this affects readings.
 
