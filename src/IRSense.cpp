@@ -138,7 +138,7 @@ bool IRSense::setControlRegister(uint8_t cmd, uint8_t val)
   return this->writeByte(0x80|cmd, val);
 }
 
-bool IRSense::begin(TwoWire& i2cInterface, uint8_t tmd26721Address=0x39)
+bool IRSense::begin(TwoWire& i2cInterface, uint8_t tmd26721Address)
 {
   this->i2cInterface = &i2cInterface;
   this->initialized = this->reinitialize();
